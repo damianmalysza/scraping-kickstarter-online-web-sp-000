@@ -10,8 +10,13 @@ def create_project_hash
   return_hash = {} #placeholder for return_hash - eventually
 
   #iterates through the nokogiri array of project names and adds titles as keys set to value of empty array
-  project_names.each do |project|
-    return_hash[project.text] = {}
+  projects.each do |project|
+    return_hash[project.css(".bbcard_name").css("a").text] = {
+      description: project.css(".bbcard_blurb").text.strip,
+      location: project.css(".project-meta").css("a").text.strip,
+      image_link: project.css(".project-thumbnail").css("img").attr("src").text,
+      percent_funded: project.css(".project-stats").css(".funded").css("strong").text
+    }
   end
 
   binding.pry
