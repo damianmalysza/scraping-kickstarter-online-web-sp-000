@@ -19,6 +19,8 @@ def create_project_hash
     }
   end
 
+  return_hash
+
   # TO-DO --> identify css selectors for the various parameters needed, iterate through return hash and add those in as values
   # hashes should look like this in the end:
 
